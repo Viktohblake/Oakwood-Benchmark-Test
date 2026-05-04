@@ -1,5 +1,5 @@
 # Oakwood-Benchmark-Test
-# Junior Software Engineer Challenge: Mini Tax & Invoice Dashboard
+# Challenge: Mini Tax & Invoice Dashboard
 
 Welcome to our engineering challenge! We are excited to see how you approach building practical, data-driven applications.
 
