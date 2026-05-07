@@ -79,7 +79,7 @@ router.get("/summary", (req, res) => {
 /*
  MARK AS PAID
 */
-router.post("/:id/pay", (req, res) => {
+router.put("/:id/pay", (req, res) => {
   const invoiceId = req.params.id;
 
   const query = `
