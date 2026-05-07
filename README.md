@@ -1,43 +1,161 @@
-# Oakwood-Benchmark-Test
-# Challenge: Mini Tax & Invoice Dashboard
+# Mini Tax & Invoice Dashboard
 
-Welcome to our engineering challenge! We are excited to see how you approach building practical, data-driven applications.
+## Tech Stack
+- Node.js
+- Express
+- TypeScript
+- SQLite
+- Vanilla JS
 
-## 🎯 Objective
-Build a lightweight full-stack application that manages clients and calculates tax on their invoices. You will set up a SQLite database, build a RESTful API using Node.js and TypeScript, and create a simple frontend to display the data.
+## Features
+- View invoice summaries
+- Create invoices
+- Dynamic tax calculation
+- Mark invoice as paid
+- Automatic SQLite seeding
 
-## 🛠️ Tech Stack
-* **Backend:** Node.js, Express, TypeScript
-* **Database:** SQLite (using `sqlite3` or an ORM/query builder like TypeORM or Knex, your choice)
-* **Frontend:** Vanilla HTML/CSS/JavaScript OR Angular (whichever you feel allows you to execute the fastest and cleanest)
+---
 
-## 📋 Requirements
+# API Endpoints
 
-### 1. Database Setup (SQLite)
-Design and implement two tables:
-* **Clients:** `id`, `name`, `email`, `created_at`
-* **Invoices:** `id`, `client_id` (foreign key), `amount`, `tax_rate` (percentage), `status` (Paid/Unpaid), `created_at`
+## Get All Clients
 
-### 2. Backend API (TypeScript)
-Create the following RESTful endpoints:
-* `GET /api/clients` - Returns a list of all clients.
-* `POST /api/invoices` - Creates a new invoice for a specific client.
-* `GET /api/invoices/summary` - **(The Challenge)** Returns a list of all invoices joined with the client's name. It must also include a dynamically calculated field called `tax_owed` (calculated as `amount * (tax_rate / 100)`).
+```http
+GET /api/clients
+```
 
-### 3. Frontend UI
-Create a clean, simple, single-page interface that does the following:
-* Displays a table or list of the invoice summary (showing Client Name, Invoice Amount, Tax Owed, and Status).
-* Contains a simple form to create a new invoice (dropdown for selecting a client, input for amount, input for tax rate).
-* Updates the invoice list dynamically when a new invoice is submitted without requiring a full page reload.
+---
 
-## 🚀 Bonus Points (Optional)
-If you want to stand out, pick one of the following to implement:
-* Add basic data validation on the backend (e.g., ensuring amount cannot be negative).
-* Add a "Mark as Paid" button on the frontend that updates the database.
-* Include a simple setup script in `package.json` that automatically seeds the SQLite database with 2 dummy clients so the app works out of the box.
+## Create Invoice
 
-## 📦 Submission Guidelines
-* Fork this repository or create a new public repo.
-* Include a `README.md` with clear instructions on how to install dependencies, initialize the database, and run the application locally.
-* Ensure your code is clean, commented where necessary, and properly typed using TypeScript.
-* Send us the link to your repository when complete!
+```http
+POST /api/invoices
+```
+
+### Request Body
+
+```json
+{
+  "client_id": 1,
+  "amount": 5000,
+  "tax_rate": 7.5
+}
+```
+
+---
+
+## Get Invoice Summary
+
+```http
+GET /api/invoices/summary
+```
+
+Returns:
+
+* Client name
+* Invoice amount
+* Tax owed
+* Status
+
+---
+
+## Mark Invoice as Paid
+
+```http
+PUT /api/invoices/:id/pay
+```
+
+---
+
+# Tax Calculation Logic
+
+Tax owed is dynamically calculated using:
+
+```sql
+amount * (tax_rate / 100)
+```
+
+Example:
+
+```txt
+5000 * (7.5 / 100) = 375
+```
+
+---
+
+# Setup Instructions
+
+## 1. Clone Repository
+
+```bash
+git clone https://github.com/Viktohblake/Oakwood-Benchmark-Test
+```
+
+---
+
+## 2. Navigate To Backend
+
+```bash
+cd Oakwood-Benchmark-Test/backend
+```
+
+---
+
+## 3. Install Dependencies
+
+```bash
+npm install
+```
+
+---
+
+## 4. Start Backend Server
+
+```bash
+npm run dev
+```
+
+The server will run on:
+
+```txt
+http://localhost:8000
+```
+
+---
+
+## 5. Run Frontend
+
+Open frontend/index.html using VS Code Live Server.
+
+Frontend runs on:
+http://127.0.0.1:5500
+
+---
+
+# Automatic Database Seeding
+
+The application automatically seeds the SQLite database with 2 dummy clients when the backend server starts.
+
+A dedicated seed script is also available:
+
+```bash
+npm run seed
+```
+
+---
+
+# Screenshots
+
+## Dashboard UI
+
+```txt
+/screenshots/dashboard.png
+```
+
+---
+
+# Bonus Features Implemented
+
+* Backend validation
+* Mark invoice as paid
+* Automatic database seeding
