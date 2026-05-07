@@ -1,0 +1,70 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Mini Tax Dashboard</title>
+
+  <link rel="stylesheet" href="style.css" />
+</head>
+<body>
+
+  <div class="container">
+    <h1>Mini Tax & Invoice Dashboard</h1>
+
+    <!-- FORM -->
+    <div class="card">
+      <h2>Create Invoice</h2>
+
+      <form id="invoiceForm">
+
+        <select id="clientSelect" required>
+          <option value="">Select Client</option>
+        </select>
+
+        <input
+          type="number"
+          id="amount"
+          placeholder="Invoice Amount"
+          required
+        />
+
+        <input
+          type="number"
+          id="taxRate"
+          placeholder="Tax Rate (%)"
+          required
+        />
+
+        <button type="submit">
+          Create Invoice
+        </button>
+
+      </form>
+    </div>
+
+    <!-- TABLE -->
+    <div class="card">
+      <h2>Invoice Summary</h2>
+
+      <table>
+        <thead>
+          <tr>
+            <th>Client</th>
+            <th>Amount</th>
+            <th>Tax Owed</th>
+            <th>Status</th>
+            <th>Action</th>
+          </tr>
+        </thead>
+
+        <tbody id="invoiceTableBody">
+
+        </tbody>
+      </table>
+    </div>
+  </div>
+
+  <script src="app.js"></script>
+</body>
+</html>
