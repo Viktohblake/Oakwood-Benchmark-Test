@@ -148,7 +148,7 @@ npm run seed
 
 ## Dashboard UI
 
-(./screenshots/dashboard.png)
+![Dashboard Screenshot](./screenshots/dashboard.png)
 
 ---
 
