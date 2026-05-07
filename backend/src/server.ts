@@ -1,5 +1,7 @@
 import express from "express";
 import cors from "cors";
+import "./db/database";
+import "./db/seed";
 
 const app = express();
 
